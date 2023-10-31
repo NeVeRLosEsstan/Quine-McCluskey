@@ -58,7 +58,7 @@ bool Quine_McCluskey::check_duplicate(vector<implicant_struct> x, implicant_stru
 
 void Quine_McCluskey::Init(ifstream &input_file) {
 
-    char key;
+	char key;
 	set<unsigned int> on_dc_set;
 	implicant imp_tmp;
 	imp_tmp.dashes = 0;
@@ -69,33 +69,33 @@ void Quine_McCluskey::Init(ifstream &input_file) {
 		ss >> key;
 		if( key=='.' ) {
 			ss >> key;
-            if( key=='i' ) {
+			if( key=='i' ) {
 				getline(input_file, s);
-		    	this->N = atoi(s.c_str());
-		    }
-		    else if( key=='m' ) {
+				this->N = atoi(s.c_str());
+			}
+			else if( key=='m' ) {
 				getline(input_file, s);
 				stringstream ss(s);
 				while (getline(ss, s, ' ')) {
 					this->on_set.push_back(atoi(s.c_str()));
 					on_dc_set.insert(atoi(s.c_str()));
 				}
-		    }
-		    else if( key=='d' ) {
+			}
+			else if( key=='d' ) {
 				getline(input_file, s);
 				stringstream ss(s);
 				while (getline(ss, s, ' ')) {
 					this->dc_set.push_back(atoi(s.c_str()));
 					on_dc_set.insert(atoi(s.c_str()));
 				}
-		    }
-        }
+			}
+		}
 	}
 	for (set<unsigned int>::iterator itr = on_dc_set.begin(); itr != on_dc_set.end(); ++itr) {
 		imp_tmp.data = *itr;
 		this->implicants.push_back(imp_tmp);
 	}
-    table = vector<vector<implicant_struct> >(N+1);
+	table = vector<vector<implicant_struct> >(N+1);
 }
 
 void Quine_McCluskey::create_table() {

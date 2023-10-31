@@ -6,8 +6,8 @@
 using namespace std;
 
 typedef struct implicant {
-    unsigned int data;
-    unsigned int dashes;
+	unsigned int data;
+	unsigned int dashes;
 } implicant_struct;
 
 typedef struct sort_element {

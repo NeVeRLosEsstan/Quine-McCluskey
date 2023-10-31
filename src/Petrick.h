@@ -37,7 +37,7 @@ class Petrick{
 		bool RD();
 		bool CD();
 		bool compare_prime_on(implicant_struct, unsigned int);
-        	bool check_duplicate(vector<implicant_struct>, implicant_struct);
+		bool check_duplicate(vector<implicant_struct>, implicant_struct);
 
 	public:
 		void Init( vector<implicant_struct>, vector<unsigned int>, int);

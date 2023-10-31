@@ -13,9 +13,9 @@ using namespace std;
 
 bool sort_by_SOP(const sort_element_struct a, const sort_element_struct b) {
 	if (a.min_cov.size() < b.min_cov.size())
-        	return true;
+		return true;
 	else if (a.min_cov.size() > b.min_cov.size())
-        	return false;
+		return false;
 	else 
 		return (a.literal < b.literal);
 }
@@ -94,9 +94,9 @@ bool Petrick::EPI() {
 		}
 		for (int k = 0; k < this->map_row.size(); k++) {
 			if (this->map_row[k].x_loc.empty()) {
-                this->map_row.erase(this->map_row.begin() + k);
+				this->map_row.erase(this->map_row.begin() + k);
 				k--;
-            }
+			}
 		}
 		for (int k = 0; k < this->map_col.size(); k++) {
 			if (this->map_col[k].axis == *itr) {
@@ -165,9 +165,9 @@ bool Petrick::RD() {
 		}
 		for (int k = 0; k < this->map_col.size(); k++) {
 			if (this->map_col[k].x_loc.empty()) {
-                this->map_col.erase(this->map_col.begin() + k);
+				this->map_col.erase(this->map_col.begin() + k);
 				k--;
-            }
+			}
 		}
 		for (int k = 0; k < this->map_row.size(); k++) {
 			if (this->map_row[k].axis == *itr) {
@@ -208,9 +208,9 @@ bool Petrick::CD() {
 		}
 		for (int k = 0; k < this->map_row.size(); k++) {
 			if (this->map_row[k].x_loc.empty()) {
-                this->map_row.erase(this->map_row.begin() + k);
+				this->map_row.erase(this->map_row.begin() + k);
 				k--;
-            }
+			}
 		}
 		for (int k = 0; k < this->map_col.size(); k++) {
 			if (this->map_col[k].axis == *itr) {
@@ -247,12 +247,12 @@ sort_element_struct Petrick::solve() {
 		for (int i = 0; i < this->map_row.size(); i++) {
 			axis.push_back(map_row[i].axis);
 			for (int j = 0; j < this->map_col.size(); j++) {
-                int k = j/32;
+				int k = j/32;
 				map_bit_row[i][k]<<= 1;
 				if (this->map_row[i].x_loc.find(map_col[j].axis) != this->map_row[i].x_loc.end()) {
 					map_bit_row[i][k]++;
 				}
-            }
+			}
 		}
 
 		Node *root = new Node;
@@ -352,8 +352,8 @@ sort_element_struct Petrick::solve() {
 						}
 					}
 					else {
-                        delete tmp;
-                    }
+						delete tmp;
+					}
 				}
 			}
 			delete p;
@@ -371,7 +371,7 @@ sort_element_struct Petrick::solve() {
 				tmp.min_cov.push_back(this->prime_implicants[*it]);
 				tmp.literal += __builtin_popcount(this->prime_implicants[*it].dashes);
 			}
-            sop_sort.push_back(tmp);
+			sop_sort.push_back(tmp);
 		}
 		
 	}

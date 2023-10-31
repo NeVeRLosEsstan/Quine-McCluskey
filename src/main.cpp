@@ -21,14 +21,14 @@ bool sort_by_output(const implicant_struct a, const implicant_struct b) {
 			else if (dasha!=0 && dashb==0) return false;
 		}
 		else if (bita < bitb) {
-            if (dasha==0 && dashb==0) return false;
-            else if (dasha==0 && dashb!=0) return true;
-            else if (dasha!=0 && dashb==0) return false;
-        }
+			if (dasha==0 && dashb==0) return false;
+			else if (dasha==0 && dashb!=0) return true;
+			else if (dasha!=0 && dashb==0) return false;
+		}
 		else {
-            if (dasha==0 && dashb!=0) return true;
-            else if (dasha!=0 && dashb==0) return false;
-        }
+			if (dasha==0 && dashb!=0) return true;
+			else if (dasha!=0 && dashb==0) return false;
+		}
 	}
 	return true;
 }
@@ -41,7 +41,7 @@ void print_output(int N, implicant_struct x, ofstream& out) {
 			out << char(N-i+64);
 			if (bit == 0) out << '\'';
 		}
-    }
+	}
 }
 
 int main(int argc, char *argv[]) {
@@ -76,14 +76,14 @@ int main(int argc, char *argv[]) {
 	output_file << ".p " << prime.size() << endl;
 
 	for (int i = 0; i < ((prime.size()>15)? 15 : prime.size()); i++) {
-        print_output(N, prime[i], output_file);
+		print_output(N, prime[i], output_file);
 		output_file << endl;
 	}
 	
 	output_file << endl << ".mc " << min_cov.min_cov.size() << endl;
 
 	for (int i = 0; i < min_cov.min_cov.size(); i++) {
-        print_output(N, min_cov.min_cov[i], output_file);
+		print_output(N, min_cov.min_cov[i], output_file);
 		output_file << endl;
 	}
 	
