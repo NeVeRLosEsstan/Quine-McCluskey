@@ -6,12 +6,12 @@ Two-level logic optimizer based on the Quine-McCluskey method.
 The main objective is to find the minimum cover of the given function.  
 It is accomplished in two steps:
 1. Find all prime implicants of the function.  
-2. Find the sum-of-products expression of the function with minimum number of prime implicant.
+2. Find the sum-of-products expression of the function with the minimum number of prime implicants.
 ## Method
-### Step1:
+### Step 1:
 The Quine-McCluskey method can be found in [here](https://www.geeksforgeeks.org/quine-mccluskey-method/ "link").  
-### Step2:
-Create a table based on the prime implicants obtained from step1.  
+### Step 2:
+Create a table based on the prime implicants obtained from step 1.  
 - For example  
 
 |  | 0 | 1 | 2 | 9 | 12 | 20 | 21 | 22 | 23 | 24 | 25 | 29 | 30 |
@@ -26,7 +26,11 @@ Create a table based on the prime implicants obtained from step1.
 
 Find the combination of rows (prime implicants) that can mark 'x' on all columns (on-set elements) with the minimum number of rows.  
 - Algorithm  
-Generate a general tree and increase the number of rows as depth increase.
+Generate a general tree and increase the number of rows as depth increases.
+<p align="left">
+  <img src="image/generaltree.png" width="90%"/>
+</p>
+Perform BFS while generating the tree
 ## Result
 This project implements the function by forward mapping: source->destination.  
 Which causes the black strips in the destination.  
