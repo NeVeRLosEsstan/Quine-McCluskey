@@ -26,41 +26,50 @@ Create a table based on the prime implicants obtained from step 1.
 
 Find the combination of rows (prime implicants) that can mark 'x' on all columns (on-set elements) with the minimum number of rows.  
 - Algorithm  
-Generate a general tree and increase the number of rows as depth increases.
+Generate a general tree and increase the number of rows as depth increases.  
+Perform BFS while generating the tree.  
+Once the combination that can mark 'x' on all columns is found, stop generating next depth.  
 <p align="left">
   <img src="image/generaltree.png" width="90%"/>
 </p>
-Perform BFS while generating the tree
-## Result
-This project implements the function by forward mapping: source->destination.  
-Which causes the black strips in the destination.  
-There are two ways to eliminate the black strips.  
-1. Do it by inverse mapping: scan the destination and copy the source pixel value.  
-2. Use the neighbor pixel to interpolate pixels in the black strips.
 
-|  | execution time (second) | speedup |
-| :---: | :---: |  :---: |
-| CPU | 0.027 |  |
-| GPU | 0.0072 | 3.7 |
+## Input/Output
+### Input format:
+'i' indicates the number of variables.  
+'m' indicates the on-set.  
+'d' indicates the don't care set.  
+  ```
+  .i
+  5
+  .m
+  0 1 2 9 12 20 21 22 23 24 25 29 30
+  .d
+  17 19 27 28 31
+  ```
+### Output format:
+'p' indicates the number of prime implicants.  
+'mc' indicates the minimum cover.  
+'literal' indicates the number of elements in the minimum cover.  
+  ```
+  .p 7
+  ABD'
+  AC
+  AE
+  A'B'C'D'
+  A'B'C'E'
+  BCD'E'
+  C'D'E
+
+  .mc 5
+  ABD'
+  AC
+  A'B'C'E'
+  BCD'E'
+  C'D'E
+  literal=16
+  ```
 ## How to use
-### Windows
-CPU:  
   ```
-  nvcc -o pt_cpu perspective_transformation_CPU.cu -arch=sm_75  
-  pt_cpu.exe
-  ```
-GPU:  
-  ```
-  nvcc -o pt_gpu perspective_transformation_GPU_device1.cu -arch=sm_75  
-  pt_gpu.exe
-  ```
-### Linux
-
-CPU:  
-  ```
-  ./compile_cpu.sh  
-  ```
-GPU: 
-  ```
-  ./compile_gpu_1.sh  
+  make
+  main.o input.txt output.txt 
   ```
