@@ -13,9 +13,9 @@ using namespace std;
 
 bool sort_by_SOP(const sort_element_struct a, const sort_element_struct b) {
 	if (a.min_cov.size() < b.min_cov.size())
-        return true;
+        	return true;
 	else if (a.min_cov.size() > b.min_cov.size())
-        return false;
+        	return false;
 	else 
 		return (a.literal < b.literal);
 }
